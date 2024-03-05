@@ -341,4 +341,5 @@ class JamayatsController extends Controller
     //     // $difference = $maintenant->diff($date2);
     //     return view('jamayats.index',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs,'maintenant'=>$maintenant]);
     // }
+    //toureche nassime 
 }
