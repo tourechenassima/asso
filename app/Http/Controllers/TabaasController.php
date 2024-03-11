@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tabe3;
 use App\Models\Apc;
-
+use Illuminate\Support\Str;
 class TabaasController extends Controller
 {
     /**
@@ -36,8 +36,8 @@ class TabaasController extends Controller
         //  ]);
 
         Tabe3::create([
-            
-            'name'=>$request->input('nametabe3'),
+                        
+            'name'=>Str::of(implode("_", explode(" ",$request->input('nametabe3')))),
         ]);
         return redirect()->route('tabe3s.index');
     }

@@ -2,7 +2,7 @@
     
     <div class="  rounded-lg mt-20 pl-50 flex flex-col  justify-around items-center gap-5  ">
       <div>
-        <form action="{{route('jamayyats-pdf-filtree')}}" method="POST" class="flex flex-row justify-between  ">
+        <form action="{{route('jamayyats-excel-filtree')}}" method="POST" class="flex flex-row justify-between  ">
           {{ csrf_field() }}
           @method('get') 
         {{-- <a href="{{route('jamayyats-pdf')}}" class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl p-2 mt-6  bg-red-400 hover:bg-rose-700 ">  طباعة قائمة الجمعيات</a> --}}
@@ -35,7 +35,7 @@
         <br><br>
       </div>
         <div>
-            <button class="border border-red-400 bg-white hover:bg-red-400 hover:text-white transition duration-300 text-xl font-bold text-red-600 rounded-lg m-2 px-20 py-2" type="submit">طباعة</button> 
+            <button class="border border-green-600 bg-white hover:bg-green-600 hover:text-white transition duration-300 text-xl font-bold text-green-600 rounded-lg m-2 px-20 py-2" type="submit">DownloadExcelFile</button> 
 
         </div>
 

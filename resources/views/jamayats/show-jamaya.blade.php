@@ -3,7 +3,7 @@
 <h1  class=" text-3xl backdrop-blur-3xl bg-green/30 text-white bg-slate-400  font-bold text-center p-4 mb-3" >   معلومات الجمعية </h1>     
 
 <h5 class="my-6 text-sm text-gray-600">آخر تحديث بتاريخ
-          <span class="py-2 px-3 font-bold text-orange-600 ">{{date('d-m-y',strtotime($jamaya->updated_at))}}</span>
+          <span class="py-2 px-3 font-bold text-orange-600 ">{{date('d-m-Y H:i:s',strtotime($jamaya->updated_at))}}</span>
           من طرف
           <span class="py-2 px-3 font-bold text-orange-600 ">{{$jamaya->user->name}}</span>
        </h5>

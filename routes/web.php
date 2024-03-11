@@ -36,10 +36,17 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/jamayyats-pdf', [JamayatsController::class, 'jamayyats_pdf'])->name('jamayyats-pdf');
 Route::get('/jamayyats-pdf-filtree', [JamayatsController::class, 'jamayyats_pdf_filtree'])->name('jamayyats-pdf-filtree');
+Route::get('/jamayyats-excel-filtree', [JamayatsController::class, 'jamayyats_excel_filtree'])->name('jamayyats-excel-filtree');
+
 Route::get('/filtre-apcs', [JamayatsController::class, 'filtreapcs'])->name('filtreapcs');
 Route::get('/printwithfilter', [JamayatsController::class, 'versjamayatspdffiltree'])->name('imprimerjamayatsfiltrees');
+Route::get('/excelwithfilter', [JamayatsController::class, 'versjamayatsexcelfiltree'])->name('imprimerjamayatsfiltreesexcel');
+
 Route::get('/compare', [JamayatsController::class, 'compare'])->name('jamayats.compare');
 Route::get('/import', [JamayatsController::class, 'import'])->name('jamayats.import');
 Route::post('/importExcelFile', [JamayatsController::class, 'importExcelFile'])->name('jamayats.importExcelFile');
+Route::get('/export', [JamayatsController::class, 'export'])->name('jamayats.export');
+Route::get('export_view', [JamayatsController::class, 'export_view'])->name('jamayats.export_view');
+
 
 require __DIR__.'/auth.php';

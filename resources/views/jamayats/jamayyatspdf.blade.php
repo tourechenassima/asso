@@ -50,6 +50,7 @@
           </tr>
         </thead>
         <tbody class="relative bg-white" >
+         
         @foreach($jamayats as $jamaya)
           <tr class="border border-b-2 " >
             
@@ -74,6 +75,7 @@
     </div>  
     <div>
       <button class="mx-auto bg-red-400 p-3 text-white text-xl font-bold rounded-md" id="print_button" onclick="printDiv()">طباعة</button> 
+
 
    
 

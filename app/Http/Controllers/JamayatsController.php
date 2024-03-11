@@ -23,6 +23,11 @@ use App\Imports\JamayatImport;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\JamayatsExport;
+use App\Exports\JamayatsExportView;
+use App\Exports\JamayatsExportQuery;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\FromCollection;
   
 //use Mail;
 class JamayatsController extends Controller
@@ -263,11 +268,53 @@ class JamayatsController extends Controller
         }
         return view('jamayats.jamayyatspdf ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
      }
+
+     public function jamayyats_excel_filtree(Request $request)    
+    {
+        $tabe3s = Tabe3::all();  
+        $apcs = Apc::all();
+        if ($request->apcs != 'allapcs') {
+           $jamayats = Jamayat::where( 'baladia' , $request->apcs)->get('id');
+        }
+        if ($request->tabe3 != 'alltabe3') {
+            $jamayats = Jamayat::where('tabaa', 'LIKE' , '%'.$request->tabe3.'%')->get('id');
+        }
+        if ($request->wad3ia != 'all0and1') {
+            $jamayats = Jamayat::where('nachta',$request->wad3ia)->get('id');
+        }
+        if ($request->apcs!= 'allapcs' && $request->tabe3 != 'alltabe3'  ) {
+            $jamayats = Jamayat::where([['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['tabaa', 'LIKE' , '%'.$request->tabe3 .'%']])->get('id');
+        }
+        if ($request->apcs!= 'allapcs' && $request->wad3ia!= 'all0and1'  ) {
+            $jamayats = Jamayat::where([['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['nachta',$request->wad3ia]])->get('id');
+        }
+        if ($request->tabe3!= 'alltabe3' && $request->wad3ia!= 'all0and1'  ) {
+            $jamayats = Jamayat::where([['tabaa', 'LIKE' , '%'.$request->tabe3 .'%'],['nachta',$request->wad3ia]])->get('id');
+        }
+        if ($request->tabe3!= 'alltabe3' && $request->apcs!= 'allapcs' && $request->wad3ia!= 'all0and1' ) {
+            $jamayats = Jamayat::where([['tabaa', 'LIKE' , '%'.$request->tabe3 .'%'],['baladia' , 'LIKE' , '%'.$request->apcs .'%'],['nachta',$request->wad3ia]])->get('id');
+            
+        }
+        if ($request->tabe3 === 'alltabe3' && $request->apcs === 'allapcs' && $request->wad3ia === 'all0and1' ) {
+            $jamayats = Jamayat::all('id');
+            
+        }
+          return (new JamayatsExportQuery($jamayats))->download('قائمة الجمعيات.xlsx');
+     }
     public function versjamayatspdffiltree()
      {    $tabe3s = Tabe3::all();
           $apcs = Apc::all();
           $jamayats = Jamayat::all();
+
           return view('jamayats.jamayatspdffiltree',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
+     } 
+     public function versjamayatsexcelfiltree()
+     {    
+        $tabe3s = Tabe3::all();
+          $apcs = Apc::all();
+          $jamayats = Jamayat::all();
+
+          return view('jamayats.jamayatsexcelfiltree',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
      } 
     public function send_email_pdf()
     {
@@ -287,13 +334,16 @@ class JamayatsController extends Controller
      */
     public function filtreapcs(Request $request)
     {
+       
         $tabe3s = Tabe3::all();
         $apcs = Apc::all();
         if ($request->apc != 'allapcs') {
             $jamayats = Jamayat::where( 'baladia' , 'LIKE' , '%'.$request->apc .'%')->get();
         }
         if ($request->tabe3 != 'alltabe3') {
-            $jamayats = Jamayat::where('tabaa', 'LIKE' , '%'.$request->tabe3.'%')->get();
+          //  $jamayats = Jamayat::where('tabaa', 'LIKE' , '%'.$request->tabe3.'%')->get();
+          $jamayats = Jamayat::where('tabaa', '=', $request->tabe3)->get();
+
         }
         if ($request->wad3ia != 'all0and1') {
             $jamayats = Jamayat::where('nachta',$request->wad3ia)->get();
@@ -313,7 +363,7 @@ class JamayatsController extends Controller
         if ($request->tabe3 === 'alltabe3' && $request->apc === 'allapcs' && $request->wad3ia === 'all0and1' ) {
             $jamayats = Jamayat::all();
         }
-
+      //  $jamayats = Jamayat::paginate(10);
 
         return view('jamayats.index ',['jamayats'=>$jamayats,'tabe3s'=>$tabe3s,'apcs'=>$apcs]);
     }
@@ -330,7 +380,23 @@ class JamayatsController extends Controller
      }
      
 
-    // public function compare(string $id)
+     
+
+       
+            public function export() 
+            {
+              
+        
+                return Excel::download(new JamayatsExport,'jamayati.xlsx');
+               
+            }
+        
+            public function export_view() 
+            {
+                return Excel::download(new JamayatsExportView, 'jamayatsview.xlsx');
+
+            }
+    // public function compare(string $id) 
     // {
     //     $jamaya = Jamayat::where('id',$id)->first();
     //     $tabe3s = Tabe3::all();
