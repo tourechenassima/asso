@@ -31,7 +31,7 @@ class JamayatsExport implements FromCollection, WithHeadings
                 '1لقب الرئيس',
                 'العنوان',
                 'الهاتف',
-                'الوظعية',
+                'الوضعية',
                 'ملاحظة',
                 'الإيميل',
                 'رقم الإعتماد2',

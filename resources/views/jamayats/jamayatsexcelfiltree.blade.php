@@ -10,9 +10,10 @@
           {{-- onchange = "this.form.submit()" --}}
           {{-- <option value="" > اختر البلدية</option> --}}
           <option value="allapcs" > كل البلديات</option>
-          <option value="شير">شير</option>              
-          <option value="ثنية العابد">ثنية العابد</option>
-          <option value="وادي الطاقة">وادي الطاقة</option>
+          
+          @foreach ($apcs as $apc )
+              <option value={{$apc->name}}> {{$apc->name}} </option>
+          @endforeach
         </select>
 
         <select  name="tabe3" id="tabe3" class="rounded-lg m-2 " style="direction: rtl" >

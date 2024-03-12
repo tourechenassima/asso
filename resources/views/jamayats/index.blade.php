@@ -8,9 +8,9 @@
 
       <div class="  rounded-lg mt-20 pl-50 flex flex-row justify-around">
         <div>
-          <a href="{{route('jamayats.create',['tabe3s'=>$tabe3s,'apcs'=>$apcs])}}" class="my-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl px-3   bg-red-700  hover:bg-rose-500 transition duration-150"> إدخال جمعية جديدة</a>
-          <a href="{{route('imprimerjamayatsfiltrees')}}" class="my-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl px-3 mt-6  bg-red-700 hover:bg-rose-500 transition duration-150 ">  طباعة قائمة الجمعيات</a>
-          <a href="{{route('imprimerjamayatsfiltreesexcel')}}" class="my-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl px-3 mt-6  bg-green-700 hover:bg-green-500 transition duration-150 ">  قوائم إكسل مخصصة </a>
+          <a href="{{route('jamayats.create',['tabe3s'=>$tabe3s,'apcs'=>$apcs])}}" class="my-10 text-slate-50 hover:text-slate-800 rounded-lg decoration-0 font-bold text-xl px-3 ml-8   bg-slate-500  hover:bg-slate-300 transition duration-150"> إدخال جمعية جديدة</a>
+          <a href="{{route('imprimerjamayatsfiltrees')}}" class="my-10 text-slate-50 hover:text-slate-800 rounded-lg decoration-0 font-bold text-xl px-3 mt-6  bg-red-700 hover:bg-red-200 transition duration-150 ">  طباعة قائمة الجمعيات</a>
+          <a href="{{route('imprimerjamayatsfiltreesexcel')}}" class="my-10 text-slate-50 hover:text-slate-800 rounded-lg decoration-0 font-bold text-xl px-3 mt-6  bg-green-700 hover:bg-green-200 transition duration-150 ">  قوائم إكسل مخصصة </a>
 
           <!-- <a  href="{{route('jamayats.export')}}" class="m-10 text-slate-50 rounded-lg decoration-0 font-bold text-xl px-3 mt-6  bg-green-600 hover:bg-green-500 transition duration-150" >Excel</a>  -->
 

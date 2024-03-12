@@ -2,11 +2,11 @@
     
 @if (Route::has('login'))
 
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 container">
-                    @auth
-                    <div class="h-80  bg-gray-50  bg-[url('..\views\images\Banner-ar.png')] bg-cover  ">
+    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 container">
+    @auth
+    <div class="h-80  bg-gray-50  bg-[url('..\views\images\Banner-ar.png')] bg-cover  ">
             
-                    </div>
+    </div>
     <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 ">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="font-family: 'Scheherazade New', serif; ">
@@ -20,7 +20,6 @@
 
                 </div>
             <div class="flex">
-
             
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
